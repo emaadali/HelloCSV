@@ -16,7 +16,7 @@
   }
 }
 
-@theme {
+@theme inline {
   --color-hello-csv-background: var(--hello-csv-background);
   --color-hello-csv-foreground: var(--hello-csv-foreground);
   --color-hello-csv-card: var(--hello-csv-card);
@@ -44,8 +44,8 @@
   --color-hello-csv-warning-foreground: var(--hello-csv-warning-foreground);
   --radius-hello-csv: var(--hello-csv-radius);
   --radius-hello-csv-lg: var(--hello-csv-radius);
-  --radius-hello-csv-md: calc(var(--hello-csv-radius) - 2px);
-  --radius-hello-csv-sm: calc(var(--hello-csv-radius) - 4px);
+  --radius-hello-csv-md: var(--hello-csv-radius-md);
+  --radius-hello-csv-sm: var(--hello-csv-radius-sm);
 }
 
 @layer base {
@@ -78,6 +78,8 @@
     --hello-csv-input: hsl(var(--input, 20 5.9% 90%));
     --hello-csv-ring: hsl(var(--ring, 24.6 95% 53.1%));
     --hello-csv-radius: var(--radius, 1rem);
+    --hello-csv-radius-md: calc(var(--hello-csv-radius) - 2px);
+    --hello-csv-radius-sm: calc(var(--hello-csv-radius) - 4px);
     --hello-csv-success: hsl(142.1 76.2% 36.3%);
     --hello-csv-success-foreground: hsl(355.7 100% 97.3%);
     --hello-csv-warning: hsl(47.9 95.8% 53.1%);
