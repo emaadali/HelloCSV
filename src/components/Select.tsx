@@ -167,9 +167,9 @@ export default function Select<T>({
         </ComboboxButton>
 
         <ComboboxOptions
-          anchor="bottom"
+          modal={false}
           transition
-          className="absolute z-99 mt-1 max-h-60 w-[var(--input-width)] overflow-auto rounded-[var(--hello-csv-radius-md)] border border-hello-csv-border bg-hello-csv-popover p-1 text-hello-csv-popover-foreground shadow-md focus:outline-hidden data-leave:transition data-leave:duration-100 data-leave:ease-in data-closed:data-leave:opacity-0 text-sm"
+          className="absolute z-[9999] mt-1 max-h-60 w-full overflow-auto rounded-[var(--hello-csv-radius-md)] border border-hello-csv-border bg-hello-csv-popover p-1 text-hello-csv-popover-foreground shadow-md focus:outline-hidden data-leave:transition data-leave:duration-100 data-leave:ease-in data-closed:data-leave:opacity-0 text-sm"
         >
           {hasNoOptions && (
             <ComboboxOption
