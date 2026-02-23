@@ -19,7 +19,7 @@ const ARROW_SIZE = 8; // square before rotation
 const ARROW_OFFSET = -4;
 
 const baseClasses = cva(
-  'absolute z-50 w-max rounded-md bg-gray-900 px-3 py-2 text-xs text-white shadow-lg transition-opacity duration-200',
+  'absolute z-50 w-max rounded-[--radius-hello-csv-md] border border-hello-csv-border bg-hello-csv-popover px-3 py-1.5 text-xs text-hello-csv-popover-foreground shadow-md transition-opacity duration-200',
   {
     variants: {
       visible: {
@@ -206,7 +206,7 @@ export default function Tooltip({
 
             {/* Arrow */}
             <div
-              className="absolute h-2 w-2 rotate-45 bg-gray-900"
+              className="absolute h-2 w-2 rotate-45 border border-hello-csv-border bg-hello-csv-popover"
               style={
                 placement === 'bottom'
                   ? { top: ARROW_OFFSET, left: arrowOffset - ARROW_SIZE / 2 }

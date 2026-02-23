@@ -51,7 +51,7 @@ export default function SummaryInfo({
               <div className="text-md my-2 font-medium">
                 {rowFile?.name || 'Data entered manually'}
               </div>
-              <div className="my-2 text-sm text-gray-500">
+              <div className="my-2 text-sm text-hello-csv-muted-foreground">
                 {rowFile
                   ? `${t('importStatus.original')}: ${formatFileSize(rowFile?.size || 0)} · ${t('importStatus.processed')}: ${formatFileSize(getDataSize(sheetData, sheetDefinitions, enumLabelDict, csvDownloadMode))}`
                   : `${t('importStatus.processed')}: ${formatFileSize(getDataSize(sheetData, sheetDefinitions, enumLabelDict, csvDownloadMode))}`}
@@ -75,16 +75,16 @@ export default function SummaryInfo({
             </div>
           </div>
         </div>
-        <div className="border-b border-gray-200 pb-2"></div>
+        <div className="border-b border-hello-csv-border pb-2"></div>
         <div>
           <div className="flex flex-row">
             <div className="my-2 mr-5 text-center">
               {mode === 'failed' ? (
-                <ExclamationTriangleIcon className="text-hello-csv-danger-light h-8 w-8" />
+                <ExclamationTriangleIcon className="text-hello-csv-destructive h-8 w-8" />
               ) : completedWithErrors ? (
-                <ExclamationCircleIcon className="text-hello-csv-warning-light h-8 w-8" />
+                <ExclamationCircleIcon className="text-hello-csv-warning h-8 w-8" />
               ) : (
-                <CheckCircleIcon className="text-hello-csv-success-light h-8 w-8" />
+                <CheckCircleIcon className="text-hello-csv-success h-8 w-8" />
               )}
             </div>
             <div className="flex-1">
@@ -95,7 +95,7 @@ export default function SummaryInfo({
                 {t('importStatus.totalRows', { totalRows })}
               </div>
               {statistics && (
-                <div className="my-2 text-sm text-gray-500">
+                <div className="my-2 text-sm text-hello-csv-muted-foreground">
                   {statistics.skipped >= 0 && (
                     <span>
                       {t('importStatus.statisticsSkipped', {
@@ -122,7 +122,7 @@ export default function SummaryInfo({
                 </div>
               )}
               {mode === 'failed' && (
-                <div className="my-2 text-sm text-gray-500">
+                <div className="my-2 text-sm text-hello-csv-muted-foreground">
                   {t('importStatus.status')}:{' '}
                   <Badge variant="error">{t('importStatus.failed')}</Badge>
                 </div>

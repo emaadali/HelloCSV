@@ -13,43 +13,43 @@ export type ButtonGroupDefinition = {
 };
 
 const buttonStyles = cva(
-  'relative inline-flex cursor-pointer items-center px-3 py-2 text-sm font-semibold ring-gray-300 ring-1 ring-inset focus:z-10',
+  'relative inline-flex cursor-pointer items-center px-3 py-2 text-sm font-medium ring-hello-csv-border ring-1 ring-inset focus:z-10 transition-colors',
   {
     variants: {
       active: {
         true: '',
-        false: 'bg-white hover:bg-gray-50',
+        false: 'bg-hello-csv-background hover:bg-hello-csv-accent',
       },
       variant: {
         default: '',
-        danger: 'text-hello-csv-danger',
+        danger: 'text-hello-csv-destructive',
       },
       location: {
-        left: 'rounded-l-md',
+        left: 'rounded-l-[--radius-hello-csv-md]',
         center: '-ml-px',
-        right: 'rounded-r-md -ml-px ',
+        right: 'rounded-r-[--radius-hello-csv-md] -ml-px ',
       },
     },
     compoundVariants: [
       {
         active: true,
         variant: 'default',
-        className: 'bg-gray-900 text-white',
+        className: 'bg-hello-csv-foreground text-hello-csv-background',
       },
       {
         active: true,
         variant: 'danger',
-        className: 'bg-hello-csv-danger text-white',
+        className: 'bg-hello-csv-destructive text-white',
       },
       {
         active: false,
         variant: 'default',
-        className: 'text-gray-900',
+        className: 'text-hello-csv-foreground',
       },
       {
         active: false,
         variant: 'danger',
-        className: 'text-hello-csv-danger',
+        className: 'text-hello-csv-destructive',
       },
     ],
   }
@@ -57,7 +57,7 @@ const buttonStyles = cva(
 
 export default function ButtonGroup({ activeButton, buttons }: Props) {
   return (
-    <span className="isolate inline-flex rounded-md shadow-xs">
+    <span className="isolate inline-flex rounded-[--radius-hello-csv-md] shadow-xs">
       {buttons.map((button, index) => (
         <button
           key={button.value}

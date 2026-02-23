@@ -76,7 +76,7 @@ export default function SheetDataEditorCell({
   );
 
   const cellBackgroundColor = errorsText
-    ? 'bg-hello-csv-danger-extra-light'
+    ? 'bg-hello-csv-destructive/10'
     : readOnly
       ? 'bg-hello-csv-muted'
       : '';

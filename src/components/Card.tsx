@@ -8,22 +8,25 @@ interface Props {
   withPadding?: boolean;
 }
 
-const baseClasses = cva('overflow-hidden rounded-md border border-gray-200', {
-  variants: {
-    variant: {
-      default: 'bg-white',
-      muted: 'bg-hello-csv-muted',
+const baseClasses = cva(
+  'flex flex-col gap-6 rounded-[--radius-hello-csv-lg] border border-hello-csv-border text-hello-csv-card-foreground shadow-xs',
+  {
+    variants: {
+      variant: {
+        default: 'bg-hello-csv-card',
+        muted: 'bg-hello-csv-muted',
+      },
+      withPadding: {
+        true: 'p-6',
+        false: '',
+      },
     },
-    withPadding: {
-      true: 'px-4 py-5 sm:p-6',
-      false: '',
+    defaultVariants: {
+      variant: 'default',
+      withPadding: true,
     },
-  },
-  defaultVariants: {
-    variant: 'default',
-    withPadding: true,
-  },
-});
+  }
+);
 
 const Card = forwardRef<HTMLDivElement, Props>(
   ({ children, className, variant, withPadding = true }, ref) => {

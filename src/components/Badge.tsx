@@ -1,27 +1,34 @@
 import { cva } from 'cva';
 import { ReactNode } from 'preact/compat';
 
-type BadgeVariant = 'primary' | 'success' | 'error';
+type BadgeVariant = 'primary' | 'success' | 'error' | 'secondary' | 'outline';
 
 interface Props {
   children?: ReactNode;
   variant?: BadgeVariant;
 }
 
-const baseClasses = cva('inline-flex items-center rounded-md px-1.5 py-0.5', {
-  variants: {
-    variant: {
-      primary: 'bg-hello-csv-primary-extra-light text-xs font-medium',
-      success:
-        'bg-hello-csv-success-extra-light text-hello-csv-success text-xs font-medium',
-      error:
-        'bg-hello-csv-danger-extra-light text-hello-csv-danger text-xs font-medium',
+const baseClasses = cva(
+  'inline-flex items-center justify-center rounded-[--radius-hello-csv-md] border px-2 py-0.5 text-xs font-medium w-fit whitespace-nowrap shrink-0 [&>svg]:size-3 gap-1 [&>svg]:pointer-events-none transition-[color,box-shadow] overflow-hidden',
+  {
+    variants: {
+      variant: {
+        primary:
+          'border-transparent bg-hello-csv-primary text-hello-csv-primary-foreground',
+        secondary:
+          'border-transparent bg-hello-csv-secondary text-hello-csv-secondary-foreground',
+        success:
+          'border-transparent bg-hello-csv-success text-hello-csv-success-foreground',
+        error:
+          'border-transparent bg-hello-csv-destructive text-white',
+        outline: 'text-hello-csv-foreground border-hello-csv-border',
+      },
     },
-  },
-  defaultVariants: {
-    variant: 'primary',
-  },
-});
+    defaultVariants: {
+      variant: 'primary',
+    },
+  }
+);
 
 export default function Badge({ children, variant }: Props) {
   const componentClassName = baseClasses({ variant });

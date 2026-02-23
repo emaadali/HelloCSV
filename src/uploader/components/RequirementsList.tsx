@@ -19,7 +19,7 @@ export default function RequirementsList({ importerRequirements }: Props) {
 
           return (
             <div key={groupName} className="me-3">
-              <div className="my-3 border-b border-gray-200 pb-4 text-sm font-light uppercase">
+              <div className="my-3 border-b border-hello-csv-border pb-4 text-sm font-light uppercase text-hello-csv-muted-foreground">
                 {t(`uploader.${group}Columns`)}
               </div>
               <div className="mt-4">
@@ -28,12 +28,12 @@ export default function RequirementsList({ importerRequirements }: Props) {
                     key={`${requirement.sheetId}-${requirement.columnId}`}
                     className="my-3 flex justify-between"
                   >
-                    <div className="text-xs">{requirement.columnLabel}</div>
+                    <div className="text-xs text-hello-csv-foreground">{requirement.columnLabel}</div>
                     <div className="text-xs font-light">
                       <Tooltip
                         tooltipText={t(`uploader.${group}ColumnsTooltip`)}
                       >
-                        <InformationCircleIcon className="size-5 text-gray-500" />
+                        <InformationCircleIcon className="size-5 text-hello-csv-muted-foreground" />
                       </Tooltip>
                     </div>
                   </div>

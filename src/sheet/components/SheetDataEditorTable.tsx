@@ -53,9 +53,9 @@ export default function SheetDataEditorTable({
   }
 
   const headerClass =
-    'bg-hello-csv-muted py-3.5 pr-3 pl-4 text-left text-sm font-semibold text-gray-900 whitespace-nowrap border-y border-gray-300';
+    'bg-hello-csv-muted h-10 px-2 text-left align-middle text-sm font-medium whitespace-nowrap text-hello-csv-muted-foreground border-b border-hello-csv-border';
   const cellClass =
-    'text-sm font-medium whitespace-nowrap text-gray-900 border-b border-gray-300';
+    'text-sm whitespace-nowrap text-hello-csv-foreground border-b border-hello-csv-border p-2 align-middle';
 
   const rows = table.getRowModel().rows;
 
@@ -102,7 +102,7 @@ export default function SheetDataEditorTable({
       className="w-full table-fixed border-separate border-spacing-0"
       aria-label={t('sheet.sheetTitle')}
     >
-      <thead className="bg-hello-csv-muted sticky top-0 z-10">
+      <thead className="bg-hello-csv-muted sticky top-0 z-10 [&_tr]:border-b">
         {table.getHeaderGroups().map((headerGroup) => (
           <tr key={headerGroup.id}>
             {headerGroup.headers.map((header) => (
@@ -135,7 +135,7 @@ export default function SheetDataEditorTable({
 
                   <span
                     key={`sort-icon-${headerGroup.id}-${header.id}`}
-                    className="ml-2 flex-none rounded-sm bg-gray-500 text-gray-200"
+                    className="ml-2 flex-none rounded-sm bg-hello-csv-muted-foreground text-hello-csv-muted"
                   >
                     {{
                       asc: (
@@ -155,7 +155,7 @@ export default function SheetDataEditorTable({
                       key={`resize-icon-${headerGroup.id}-${header.id}`}
                       onMouseDown={header.getResizeHandler()}
                       onTouchStart={header.getResizeHandler()}
-                      className="absolute top-0 right-0 h-full w-0.5 cursor-col-resize touch-none bg-gray-200 select-none"
+                      className="absolute top-0 right-0 h-full w-0.5 cursor-col-resize touch-none bg-hello-csv-border select-none"
                     />
                   )}
                 </div>
@@ -166,7 +166,7 @@ export default function SheetDataEditorTable({
       </thead>
 
       <tbody
-        className="divide-y divide-gray-200"
+        className="divide-y divide-hello-csv-border"
         style={{
           height: `${rowVirtualizer.getTotalSize()}px`,
         }}

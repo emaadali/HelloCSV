@@ -19,17 +19,20 @@ interface Props {
 }
 
 const baseClasses = cva(
-  'text-center inline-block font-semibold px-3 py-2 rounded-md text-sm',
+  "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-[--radius-hello-csv-md] text-sm font-medium transition-all outline-none h-10 px-4 py-2 [&_svg]:pointer-events-none [&_svg:not([class*='size-'])]:size-4 shrink-0 [&_svg]:shrink-0",
   {
     variants: {
       variant: {
-        primary: 'shadow-xs bg-hello-csv-primary text-white',
+        primary:
+          'bg-hello-csv-primary text-hello-csv-primary-foreground shadow-xs hover:bg-hello-csv-primary/90 focus-visible:border-hello-csv-ring focus-visible:ring-hello-csv-ring/50 focus-visible:ring-[3px]',
         secondary:
-          'bg-white text-hello-csv-primary ring-1 shadow-xs ring-bg-hello-csv-primary ring-inset',
+          'bg-hello-csv-secondary text-hello-csv-secondary-foreground shadow-xs hover:bg-hello-csv-secondary/80 focus-visible:border-hello-csv-ring focus-visible:ring-hello-csv-ring/50 focus-visible:ring-[3px]',
         tertiary:
-          'bg-white text-gray-900 ring-1 shadow-xs ring-hello-csv-tertiary ring-inset',
-        success: 'shadow-xs bg-hello-csv-success text-white',
-        danger: 'shadow-xs bg-hello-csv-danger text-white',
+          'border border-hello-csv-input bg-hello-csv-background text-hello-csv-foreground hover:bg-hello-csv-accent hover:text-hello-csv-accent-foreground focus-visible:border-hello-csv-ring focus-visible:ring-hello-csv-ring/50 focus-visible:ring-[3px]',
+        success:
+          'bg-hello-csv-success text-hello-csv-success-foreground shadow-xs hover:bg-hello-csv-success/90 focus-visible:border-hello-csv-ring focus-visible:ring-hello-csv-ring/50 focus-visible:ring-[3px]',
+        danger:
+          'bg-hello-csv-destructive text-white shadow-xs hover:bg-hello-csv-destructive/90 focus-visible:ring-hello-csv-destructive/20 focus-visible:ring-[3px]',
       },
       withFullWidth: {
         true: 'w-full',
@@ -40,37 +43,6 @@ const baseClasses = cva(
         false: 'cursor-pointer',
       },
     },
-    compoundVariants: [
-      {
-        variant: 'primary',
-        disabled: false,
-        className:
-          'hover:bg-hello-csv-primary-light focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-hello-csv-primary',
-      },
-      {
-        variant: 'secondary',
-        disabled: false,
-        className:
-          'hover:opacity-80 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-hello-csv-secondary',
-      },
-      {
-        variant: 'tertiary',
-        disabled: false,
-        className: 'hover:bg-hello-csv-tertiary-light',
-      },
-      {
-        variant: 'success',
-        disabled: false,
-        className:
-          'hover:opacity-80 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-hello-csv-success',
-      },
-      {
-        variant: 'danger',
-        disabled: false,
-        className:
-          'hover:bg-hello-csv-danger-light focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-hello-csv-danger',
-      },
-    ],
     defaultVariants: {
       withFullWidth: false,
       variant: 'primary',

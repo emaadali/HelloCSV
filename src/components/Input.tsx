@@ -69,13 +69,13 @@ const Input = forwardRef<HTMLInputElement, Props>(
           onChange={(e) =>
             onChange?.(getParsedValue(e)) ?? setLocalValue(getParsedValue(e))
           }
-          className={`${classes} ${iconBuilder != null ? 'pl-10' : ''} ${clearable ? 'pr-10' : ''} focus:outline-hello-csv-primary col-start-1 row-start-1 block rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 sm:text-sm/6`}
+          className={`${classes} ${iconBuilder != null ? 'pl-10' : ''} ${clearable ? 'pr-10' : ''} col-start-1 row-start-1 flex h-10 w-full min-w-0 rounded-[--radius-hello-csv-md] border border-hello-csv-input bg-transparent px-3 py-2 text-base text-hello-csv-foreground transition-[color,box-shadow] outline-none placeholder:text-hello-csv-muted-foreground focus-visible:border-hello-csv-ring focus-visible:ring-[3px] focus-visible:ring-hello-csv-ring/50 disabled:pointer-events-none disabled:cursor-not-allowed disabled:opacity-50 md:text-sm`}
           onBlur={(e) => onBlur?.(getParsedValue(e))}
         />
         {iconBuilder?.({
           'aria-hidden': 'true',
           className:
-            'pointer-events-none col-start-1 row-start-1 ml-3 size-5 self-center text-gray-400 sm:size-4',
+            'pointer-events-none col-start-1 row-start-1 ml-3 size-5 self-center text-hello-csv-muted-foreground sm:size-4',
         })}
 
         {displayClearIcon && (
@@ -90,7 +90,7 @@ const Input = forwardRef<HTMLInputElement, Props>(
             className="col-end-2 row-start-1 flex cursor-pointer items-center justify-self-end pr-2"
           >
             <XMarkIcon
-              className="h-5 w-5 text-gray-500 hover:text-gray-700"
+              className="h-5 w-5 text-hello-csv-muted-foreground hover:text-hello-csv-foreground"
               aria-hidden="true"
             />
           </span>
