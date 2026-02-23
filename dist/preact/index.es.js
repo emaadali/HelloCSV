@@ -5478,7 +5478,7 @@ const pm = 100, js = 5, mm = [
       "aria-label": "Hello CSV",
       className: `${Zr}`,
       style: { display: "contents" },
-      children: /* @__PURE__ */ f("div", { ref: n, className: "min-h-0 w-full overflow-auto bg-white", children: t })
+      children: /* @__PURE__ */ f("div", { ref: n, className: "min-h-0 w-full overflow-auto bg-hello-csv-background", children: t })
     }
   );
 });

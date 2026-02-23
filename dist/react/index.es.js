@@ -4958,7 +4958,7 @@ const Bf = 100, Nl = 5, jf = [
       "aria-label": "Hello CSV",
       className: `${Or}`,
       style: { display: "contents" },
-      children: /* @__PURE__ */ h("div", { ref: n, className: "min-h-0 w-full overflow-auto bg-white", children: t })
+      children: /* @__PURE__ */ h("div", { ref: n, className: "min-h-0 w-full overflow-auto bg-hello-csv-background", children: t })
     }
   );
 });

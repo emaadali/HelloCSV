@@ -5754,7 +5754,7 @@ const Km = 100, ba = 5, Ym = [
       "aria-label": "Hello CSV",
       className: `${co}`,
       style: { display: "contents" },
-      children: /* @__PURE__ */ p("div", { ref: n, className: "min-h-0 w-full overflow-auto bg-white", children: t })
+      children: /* @__PURE__ */ p("div", { ref: n, className: "min-h-0 w-full overflow-auto bg-hello-csv-background", children: t })
     }
   );
 });
