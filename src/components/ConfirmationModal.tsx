@@ -66,7 +66,7 @@ export default function ConfirmationModal({
         <div className="flex min-h-full items-end justify-center p-4 text-center sm:items-center sm:p-0">
           <DialogPanel
             transition
-            className="relative grid w-full max-w-[calc(100%-2rem)] translate-x-0 translate-y-0 gap-6 rounded-[--radius-hello-csv-lg] border border-hello-csv-border bg-hello-csv-background p-6 text-left shadow-lg duration-200 data-closed:opacity-0 data-closed:zoom-out-95 data-enter:animate-in data-enter:fade-in-0 data-enter:zoom-in-95 data-leave:animate-out data-leave:fade-out-0 sm:max-w-lg"
+            className="relative grid w-full max-w-[calc(100%-2rem)] translate-x-0 translate-y-0 gap-6 rounded-[var(--hello-csv-radius)] border border-hello-csv-border bg-hello-csv-background p-6 text-left shadow-lg duration-200 data-closed:opacity-0 data-closed:zoom-out-95 data-enter:animate-in data-enter:fade-in-0 data-enter:zoom-in-95 data-leave:animate-out data-leave:fade-out-0 sm:max-w-lg"
           >
             <div className="sm:flex sm:items-start">
               {icon && (

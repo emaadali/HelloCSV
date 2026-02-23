@@ -69,7 +69,7 @@ const Input = forwardRef<HTMLInputElement, Props>(
           onChange={(e) =>
             onChange?.(getParsedValue(e)) ?? setLocalValue(getParsedValue(e))
           }
-          className={`${classes} ${iconBuilder != null ? 'pl-10' : ''} ${clearable ? 'pr-10' : ''} col-start-1 row-start-1 flex h-10 w-full min-w-0 rounded-[--radius-hello-csv-md] border border-hello-csv-input bg-transparent px-3 py-2 text-base text-hello-csv-foreground transition-[color,box-shadow] outline-none placeholder:text-hello-csv-muted-foreground focus-visible:border-hello-csv-ring focus-visible:ring-[3px] focus-visible:ring-hello-csv-ring/50 disabled:pointer-events-none disabled:cursor-not-allowed disabled:opacity-50 md:text-sm`}
+          className={`${classes} ${iconBuilder != null ? 'pl-10' : ''} ${clearable ? 'pr-10' : ''} col-start-1 row-start-1 flex h-10 w-full min-w-0 rounded-[var(--hello-csv-radius-md)] border border-hello-csv-input bg-transparent px-3 py-2 text-base text-hello-csv-foreground transition-[color,box-shadow] outline-none placeholder:text-hello-csv-muted-foreground focus-visible:border-hello-csv-ring focus-visible:ring-[3px] focus-visible:ring-hello-csv-ring/50 disabled:pointer-events-none disabled:cursor-not-allowed disabled:opacity-50 md:text-sm`}
           onBlur={(e) => onBlur?.(getParsedValue(e))}
         />
         {iconBuilder?.({

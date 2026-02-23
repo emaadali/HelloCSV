@@ -22,7 +22,7 @@ const baseClasses: Record<
       <InformationCircleIcon className="size-4 text-current" aria-hidden="true" />
     ),
     classes:
-      'relative w-full rounded-[--radius-hello-csv-lg] border border-hello-csv-border bg-hello-csv-card text-hello-csv-card-foreground px-4 py-3 text-sm grid has-[>svg]:grid-cols-[calc(var(--spacing)*4)_1fr] grid-cols-[0_1fr] has-[>svg]:gap-x-3 gap-y-0.5 items-start',
+      'relative w-full rounded-[var(--hello-csv-radius)] border border-hello-csv-border bg-hello-csv-card text-hello-csv-card-foreground px-4 py-3 text-sm grid has-[>svg]:grid-cols-[calc(var(--spacing)*4)_1fr] grid-cols-[0_1fr] has-[>svg]:gap-x-3 gap-y-0.5 items-start',
     descriptionClasses: 'text-hello-csv-muted-foreground',
   },
   success: {
@@ -30,7 +30,7 @@ const baseClasses: Record<
       <CheckCircleIcon className="size-4 text-hello-csv-success" aria-hidden="true" />
     ),
     classes:
-      'relative w-full rounded-[--radius-hello-csv-lg] border border-hello-csv-border bg-hello-csv-card text-hello-csv-success px-4 py-3 text-sm grid has-[>svg]:grid-cols-[calc(var(--spacing)*4)_1fr] grid-cols-[0_1fr] has-[>svg]:gap-x-3 gap-y-0.5 items-start',
+      'relative w-full rounded-[var(--hello-csv-radius)] border border-hello-csv-border bg-hello-csv-card text-hello-csv-success px-4 py-3 text-sm grid has-[>svg]:grid-cols-[calc(var(--spacing)*4)_1fr] grid-cols-[0_1fr] has-[>svg]:gap-x-3 gap-y-0.5 items-start',
     descriptionClasses: 'text-hello-csv-success/90',
   },
   error: {
@@ -41,7 +41,7 @@ const baseClasses: Record<
       />
     ),
     classes:
-      'relative w-full rounded-[--radius-hello-csv-lg] border border-hello-csv-border bg-hello-csv-card text-hello-csv-destructive px-4 py-3 text-sm grid has-[>svg]:grid-cols-[calc(var(--spacing)*4)_1fr] grid-cols-[0_1fr] has-[>svg]:gap-x-3 gap-y-0.5 items-start',
+      'relative w-full rounded-[var(--hello-csv-radius)] border border-hello-csv-border bg-hello-csv-card text-hello-csv-destructive px-4 py-3 text-sm grid has-[>svg]:grid-cols-[calc(var(--spacing)*4)_1fr] grid-cols-[0_1fr] has-[>svg]:gap-x-3 gap-y-0.5 items-start',
     descriptionClasses: 'text-hello-csv-destructive/90',
   },
   warning: {
@@ -52,7 +52,7 @@ const baseClasses: Record<
       />
     ),
     classes:
-      'relative w-full rounded-[--radius-hello-csv-lg] border border-hello-csv-border bg-hello-csv-card text-hello-csv-warning px-4 py-3 text-sm grid has-[>svg]:grid-cols-[calc(var(--spacing)*4)_1fr] grid-cols-[0_1fr] has-[>svg]:gap-x-3 gap-y-0.5 items-start',
+      'relative w-full rounded-[var(--hello-csv-radius)] border border-hello-csv-border bg-hello-csv-card text-hello-csv-warning px-4 py-3 text-sm grid has-[>svg]:grid-cols-[calc(var(--spacing)*4)_1fr] grid-cols-[0_1fr] has-[>svg]:gap-x-3 gap-y-0.5 items-start',
     descriptionClasses: 'text-hello-csv-warning/90',
   },
 };

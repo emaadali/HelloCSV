@@ -9,7 +9,7 @@ interface Props {
 }
 
 const baseClasses = cva(
-  'flex flex-col gap-6 rounded-[--radius-hello-csv-lg] border border-hello-csv-border text-hello-csv-card-foreground shadow-xs',
+  'flex flex-col gap-6 rounded-[var(--hello-csv-radius)] border border-hello-csv-border text-hello-csv-card-foreground shadow-xs',
   {
     variants: {
       variant: {

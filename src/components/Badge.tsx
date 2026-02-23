@@ -9,7 +9,7 @@ interface Props {
 }
 
 const baseClasses = cva(
-  'inline-flex items-center justify-center rounded-[--radius-hello-csv-md] border px-2 py-0.5 text-xs font-medium w-fit whitespace-nowrap shrink-0 [&>svg]:size-3 gap-1 [&>svg]:pointer-events-none transition-[color,box-shadow] overflow-hidden',
+  'inline-flex items-center justify-center rounded-[var(--hello-csv-radius-md)] border px-2 py-0.5 text-xs font-medium w-fit whitespace-nowrap shrink-0 [&>svg]:size-3 gap-1 [&>svg]:pointer-events-none transition-[color,box-shadow] overflow-hidden',
   {
     variants: {
       variant: {

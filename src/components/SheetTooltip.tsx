@@ -10,7 +10,7 @@ interface Props {
 }
 
 const tooltipBaseClasses = cva(
-  'bg-hello-csv-popover text-hello-csv-popover-foreground absolute outline top-full w-full whitespace-normal z-5 mb-2 hidden px-2 py-4 text-xs group-focus-within:block group-hover:block rounded-[--radius-hello-csv-md] border border-hello-csv-border shadow-md',
+  'bg-hello-csv-popover text-hello-csv-popover-foreground absolute outline top-full w-full whitespace-normal z-5 mb-2 hidden px-2 py-4 text-xs group-focus-within:block group-hover:block rounded-[var(--hello-csv-radius-md)] border border-hello-csv-border shadow-md',
   {
     variants: {
       variant: {

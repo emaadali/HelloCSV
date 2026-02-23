@@ -25,9 +25,9 @@ const buttonStyles = cva(
         danger: 'text-hello-csv-destructive',
       },
       location: {
-        left: 'rounded-l-[--radius-hello-csv-md]',
+        left: 'rounded-l-[var(--hello-csv-radius-md)]',
         center: '-ml-px',
-        right: 'rounded-r-[--radius-hello-csv-md] -ml-px ',
+        right: 'rounded-r-[var(--hello-csv-radius-md)] -ml-px ',
       },
     },
     compoundVariants: [
@@ -57,7 +57,7 @@ const buttonStyles = cva(
 
 export default function ButtonGroup({ activeButton, buttons }: Props) {
   return (
-    <span className="isolate inline-flex rounded-[--radius-hello-csv-md] shadow-xs">
+    <span className="isolate inline-flex rounded-[var(--hello-csv-radius-md)] shadow-xs">
       {buttons.map((button, index) => (
         <button
           key={button.value}

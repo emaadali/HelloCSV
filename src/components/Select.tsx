@@ -132,7 +132,7 @@ export default function Select<T>({
           aria-label={props['aria-label'] ?? placeholder}
         >
           <ComboboxInput
-            className={`${classes} flex h-10 w-full items-center justify-between gap-2 rounded-[--radius-hello-csv-md] border border-hello-csv-input bg-transparent px-3 py-2 text-sm whitespace-nowrap transition-[color,box-shadow] outline-none focus-visible:border-hello-csv-ring focus-visible:ring-[3px] focus-visible:ring-hello-csv-ring/50 disabled:cursor-not-allowed disabled:opacity-50 cursor-pointer truncate focus:cursor-text ${clearButtonDisplayed ? 'pr-12' : 'pr-8'} text-left text-hello-csv-foreground placeholder:text-hello-csv-muted-foreground`}
+            className={`${classes} flex h-10 w-full items-center justify-between gap-2 rounded-[var(--hello-csv-radius-md)] border border-hello-csv-input bg-transparent px-3 py-2 text-sm whitespace-nowrap transition-[color,box-shadow] outline-none focus-visible:border-hello-csv-ring focus-visible:ring-[3px] focus-visible:ring-hello-csv-ring/50 disabled:cursor-not-allowed disabled:opacity-50 cursor-pointer truncate focus:cursor-text ${clearButtonDisplayed ? 'pr-12' : 'pr-8'} text-left text-hello-csv-foreground placeholder:text-hello-csv-muted-foreground`}
             displayValue={getDisplayValue}
             onChange={(event) =>
               searchable && setQuery((event.target as HTMLInputElement).value)
@@ -169,7 +169,7 @@ export default function Select<T>({
         <ComboboxOptions
           anchor="bottom"
           transition
-          className="absolute z-99 mt-1 max-h-60 w-[var(--input-width)] overflow-auto rounded-[--radius-hello-csv-md] border border-hello-csv-border bg-hello-csv-popover p-1 text-hello-csv-popover-foreground shadow-md focus:outline-hidden data-leave:transition data-leave:duration-100 data-leave:ease-in data-closed:data-leave:opacity-0 text-sm"
+          className="absolute z-99 mt-1 max-h-60 w-[var(--input-width)] overflow-auto rounded-[var(--hello-csv-radius-md)] border border-hello-csv-border bg-hello-csv-popover p-1 text-hello-csv-popover-foreground shadow-md focus:outline-hidden data-leave:transition data-leave:duration-100 data-leave:ease-in data-closed:data-leave:opacity-0 text-sm"
         >
           {hasNoOptions && (
             <ComboboxOption

@@ -42,10 +42,6 @@
   --color-hello-csv-success-foreground: var(--hello-csv-success-foreground);
   --color-hello-csv-warning: var(--hello-csv-warning);
   --color-hello-csv-warning-foreground: var(--hello-csv-warning-foreground);
-  --radius-hello-csv: var(--hello-csv-radius);
-  --radius-hello-csv-lg: var(--hello-csv-radius);
-  --radius-hello-csv-md: var(--hello-csv-radius-md);
-  --radius-hello-csv-sm: var(--hello-csv-radius-sm);
 }
 
 @layer base {

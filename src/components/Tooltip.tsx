@@ -19,7 +19,7 @@ const ARROW_SIZE = 8; // square before rotation
 const ARROW_OFFSET = -4;
 
 const baseClasses = cva(
-  'absolute z-50 w-max rounded-[--radius-hello-csv-md] border border-hello-csv-border bg-hello-csv-popover px-3 py-1.5 text-xs text-hello-csv-popover-foreground shadow-md transition-opacity duration-200',
+  'absolute z-50 w-max rounded-[var(--hello-csv-radius-md)] border border-hello-csv-border bg-hello-csv-popover px-3 py-1.5 text-xs text-hello-csv-popover-foreground shadow-md transition-opacity duration-200',
   {
     variants: {
       visible: {
