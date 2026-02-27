@@ -31,6 +31,7 @@ import {
   DATA_COLUMN_MIN_WIDTH,
 } from '@/constants';
 import { useImporterDefinition } from '@/importer/hooks';
+import { useCallback } from 'preact/compat';
 
 interface Props {
   sheetDefinition: SheetDefinition;
@@ -62,10 +63,18 @@ export default function SheetDataEditor({
   const [errorColumnFilter, setErrorColumnFilter] = useState<string | null>(
     null
   );
+  const [columnSizing, setColumnSizing] = useState<
+    Record<string, number>
+  >({});
+  const [measuredHeaderWidths, setMeasuredHeaderWidths] = useState<
+    Record<string, number>
+  >({});
 
   useEffect(() => {
     setSelectedRows([]); // On changing sheets
     setViewMode('all');
+    setColumnSizing({});
+    setMeasuredHeaderWidths({});
   }, [sheetDefinition]);
 
   const rowData = useFilteredRowData(
@@ -93,6 +102,20 @@ export default function SheetDataEditor({
       errors: invalidRows.length,
     };
   }, [data, sheetValidationErrors]);
+
+  const onHeaderWidthsMeasured = useCallback(
+    (widths: Record<string, number>) => {
+      setMeasuredHeaderWidths((prev) => ({ ...prev, ...widths }));
+      setColumnSizing((prev) => {
+        const next = { ...prev };
+        for (const [id, w] of Object.entries(widths)) {
+          if (next[id] === undefined) next[id] = w;
+        }
+        return next;
+      });
+    },
+    []
+  );
 
   const columns = useMemo<ColumnDef<SheetRow>[]>(() => {
     const baseColumns: ColumnDef<SheetRow>[] = availableActions.includes(
@@ -137,10 +160,18 @@ export default function SheetDataEditor({
             sortingFn: 'auto',
             meta: { columnLabel: column.label },
             enableResizing: true,
+            minSize:
+              measuredHeaderWidths[column.id] ?? DATA_COLUMN_MIN_WIDTH,
           }) as ColumnDef<SheetRow>
       ),
     ];
-  }, [sheetDefinition, selectedRows, rowData, availableActions]);
+  }, [
+    sheetDefinition,
+    selectedRows,
+    rowData,
+    availableActions,
+    measuredHeaderWidths,
+  ]);
 
   const table = useReactTable<SheetRow>({
     data: rowData,
@@ -149,6 +180,8 @@ export default function SheetDataEditor({
     getSortedRowModel: getSortedRowModel(),
     columnResizeMode: 'onChange',
     columnResizeDirection: 'ltr',
+    state: { columnSizing },
+    onColumnSizingChange: setColumnSizing,
     defaultColumn: {
       minSize: DATA_COLUMN_MIN_WIDTH,
       maxSize: DATA_COLUMN_MAX_WIDTH,
@@ -205,6 +238,7 @@ export default function SheetDataEditor({
           sheetValidationErrors={sheetValidationErrors}
           onCellValueChanged={onCellValueChanged}
           setSelectedRows={setSelectedRows}
+          onHeaderWidthsMeasured={onHeaderWidthsMeasured}
           enumLabelDict={enumLabelDict}
         />
       </div>

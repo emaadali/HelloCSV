@@ -14,8 +14,10 @@ import { findRowIndex } from '../utils';
 import { ChevronDownIcon, ChevronUpIcon } from '@heroicons/react/20/solid';
 import { useVirtualizer } from '@tanstack/react-virtual';
 import { RefObject, useCallback } from 'preact/compat';
+import { useLayoutEffect, useRef } from 'preact/hooks';
 import { CHECKBOX_COLUMN_ID, ESTIMATED_ROW_HEIGHT } from '@/constants';
 import { useImporterDefinition } from '@/importer/hooks';
+import { fieldIsRequired } from '@/validators';
 
 interface Props {
   table: Table<SheetRow>;
@@ -29,6 +31,7 @@ interface Props {
   ) => void;
   setSelectedRows: (rows: SheetRow[]) => void;
   tableContainerRef: RefObject<HTMLDivElement>;
+  onHeaderWidthsMeasured?: (widths: Record<string, number>) => void;
   enumLabelDict: EnumLabelDict;
 }
 
@@ -40,6 +43,7 @@ export default function SheetDataEditorTable({
   onCellValueChanged,
   setSelectedRows,
   tableContainerRef,
+  onHeaderWidthsMeasured,
   enumLabelDict,
 }: Props) {
   const { t } = useTranslations();
@@ -97,8 +101,30 @@ export default function SheetDataEditorTable({
     [rowVirtualizer]
   );
 
+  const headerMeasureRef = useRef<HTMLDivElement>(null);
+
+  useLayoutEffect(() => {
+    if (!onHeaderWidthsMeasured || !headerMeasureRef.current) return;
+    const el = headerMeasureRef.current;
+    const widths: Record<string, number> = {};
+    const padding = 50;
+    for (const column of sheetDefinition.columns) {
+      const text = `${column.label}${fieldIsRequired(column) ? ' *' : ''}`;
+      el.textContent = text;
+      const w = el.getBoundingClientRect().width;
+      widths[column.id] = Math.ceil(w) + padding;
+    }
+    onHeaderWidthsMeasured(widths);
+  }, [sheetDefinition, onHeaderWidthsMeasured]);
+
   return (
-    <table
+    <>
+      <div
+        ref={headerMeasureRef}
+        className="pointer-events-none invisible absolute left-[-9999px] top-0 whitespace-nowrap text-sm font-medium"
+        aria-hidden="true"
+      />
+      <table
       className="w-full table-fixed border-separate border-spacing-0"
       aria-label={t('sheet.sheetTitle')}
     >
@@ -238,5 +264,6 @@ export default function SheetDataEditorTable({
         </tr>
       </tbody>
     </table>
+    </>
   );
 }
