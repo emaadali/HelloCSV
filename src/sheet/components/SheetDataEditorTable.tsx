@@ -101,31 +101,42 @@ export default function SheetDataEditorTable({
     [rowVirtualizer]
   );
 
-  const headerMeasureRef = useRef<HTMLDivElement>(null);
+  const headerMeasureRef = useRef<HTMLSpanElement>(null);
 
   useLayoutEffect(() => {
     if (!onHeaderWidthsMeasured || !headerMeasureRef.current) return;
     const el = headerMeasureRef.current;
-    const widths: Record<string, number> = {};
-    const padding = 50;
-    for (const column of sheetDefinition.columns) {
-      const text = `${column.label}${fieldIsRequired(column) ? ' *' : ''}`;
-      el.textContent = text;
-      const w = el.getBoundingClientRect().width;
-      widths[column.id] = Math.ceil(w) + padding;
-    }
-    onHeaderWidthsMeasured(widths);
+    const sheet = sheetDefinition;
+    const cb = onHeaderWidthsMeasured;
+    const rafId = requestAnimationFrame(() => {
+      const widths: Record<string, number> = {};
+      const padding = 50;
+      for (const column of sheet.columns) {
+        const text = `${column.label}${fieldIsRequired(column) ? ' *' : ''}`;
+        el.textContent = text;
+        const w = el.scrollWidth;
+        widths[column.id] = Math.ceil(w) + padding;
+      }
+      cb(widths);
+    });
+    return () => cancelAnimationFrame(rafId);
   }, [sheetDefinition, onHeaderWidthsMeasured]);
 
   return (
     <>
       <div
-        ref={headerMeasureRef}
-        className="pointer-events-none invisible absolute left-[-9999px] top-0 whitespace-nowrap text-sm font-medium"
+        className="pointer-events-none invisible absolute left-0 top-0 overflow-hidden"
+        style={{ width: 0, height: 0 }}
         aria-hidden="true"
-      />
+      >
+        <span
+          ref={headerMeasureRef}
+          className="whitespace-nowrap text-sm font-medium"
+        />
+      </div>
       <table
-      className="w-full table-fixed border-separate border-spacing-0"
+      className="table-fixed border-separate border-spacing-0 min-w-full"
+      style={{ width: 'max-content' }}
       aria-label={t('sheet.sheetTitle')}
     >
       <thead className="[&_tr]:border-b">
@@ -140,7 +151,10 @@ export default function SheetDataEditorTable({
                     : headerClass
                 }
                 colSpan={header.colSpan}
-                style={{ width: header.getSize() }}
+                style={{
+                  width: `${header.getSize()}px`,
+                  minWidth: `${header.getSize()}px`,
+                }}
               >
                 <div
                   className={`flex w-full ${
@@ -210,7 +224,10 @@ export default function SheetDataEditorTable({
                     key={cell.id}
                     aria-label={`Select row ${Number(row.id) + 1}`}
                     className={`bg-hello-csv-muted ${cellClass} sticky left-0 z-6 pr-3 pl-4`}
-                    style={{ width: cell.column.getSize() }}
+                    style={{
+                      width: `${cell.column.getSize()}px`,
+                      minWidth: `${cell.column.getSize()}px`,
+                    }}
                   >
                     {flexRender(cell.column.columnDef.cell, cell.getContext())}
                   </td>
@@ -237,7 +254,10 @@ export default function SheetDataEditorTable({
                 <td
                   key={cell.id}
                   className={cellClass}
-                  style={{ width: cell.column.getSize() }}
+                  style={{
+                    width: `${cell.column.getSize()}px`,
+                    minWidth: `${cell.column.getSize()}px`,
+                  }}
                 >
                   <SheetDataEditorCell
                     rowId={row.id}
