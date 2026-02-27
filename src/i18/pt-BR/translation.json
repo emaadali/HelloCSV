@@ -14,7 +14,7 @@
     }
   },
   "importer": {
-    "upload": "Enviar",
+    "upload": "Continuar",
     "uploadBlocked": "Seus dados têm erros de validação. Corrija-os antes de enviar.",
     "back": "Voltar",
     "loader": {

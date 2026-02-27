@@ -14,7 +14,7 @@
     }
   },
   "importer": {
-    "upload": "Télécharger",
+    "upload": "Continuer",
     "uploadBlocked": "Vos données comportent des erreurs de validation. Corrigez-les avant de les télécharger.",
     "back": "Retour",
     "loader": {

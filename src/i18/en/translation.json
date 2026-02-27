@@ -14,7 +14,7 @@
     }
   },
   "importer": {
-    "upload": "Upload",
+    "upload": "Continue",
     "uploadBlocked": "Your data has validation errors. Fix them before uploading.",
     "back": "Back",
     "loader": {
