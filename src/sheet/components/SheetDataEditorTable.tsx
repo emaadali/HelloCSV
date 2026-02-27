@@ -53,7 +53,7 @@ export default function SheetDataEditorTable({
   }
 
   const headerClass =
-    'bg-hello-csv-muted h-10 px-2 text-left align-middle text-sm font-medium whitespace-nowrap text-hello-csv-muted-foreground border-b border-hello-csv-border';
+    'sticky top-0 z-10 bg-hello-csv-muted h-10 px-2 text-left align-middle text-sm font-medium whitespace-nowrap text-hello-csv-muted-foreground border-b border-hello-csv-border';
   const cellClass =
     'text-sm whitespace-nowrap text-hello-csv-foreground border-b border-hello-csv-border p-2 align-middle';
 
@@ -102,7 +102,7 @@ export default function SheetDataEditorTable({
       className="w-full table-fixed border-separate border-spacing-0"
       aria-label={t('sheet.sheetTitle')}
     >
-      <thead className="bg-hello-csv-muted sticky top-0 z-10 [&_tr]:border-b">
+      <thead className="[&_tr]:border-b">
         {table.getHeaderGroups().map((headerGroup) => (
           <tr key={headerGroup.id}>
             {headerGroup.headers.map((header) => (
@@ -111,7 +111,7 @@ export default function SheetDataEditorTable({
                 className={
                   header.column.id === CHECKBOX_COLUMN_ID
                     ? `${headerClass} sticky left-0 z-20`
-                    : `relative z-10 ${headerClass}`
+                    : headerClass
                 }
                 colSpan={header.colSpan}
                 style={{ width: header.getSize() }}

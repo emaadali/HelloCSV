@@ -37,12 +37,15 @@ function buildSheetSuggestedHeaderMappings(
         return false;
       }
 
+      const normalizedHeader = (normalizeValue(header) ?? '').toLowerCase();
+
       const keywords = [
         column.id,
         ...(column.suggestedMappingKeywords || []),
-      ].map((k) => normalizeValue(k));
-
-      const normalizedHeader = normalizeValue(header);
+      ]
+        .map((k) => normalizeValue(k))
+        .filter((v): v is string => v != null)
+        .map((v) => v.toLowerCase());
 
       return keywords.includes(normalizedHeader);
     });

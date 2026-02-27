@@ -102,7 +102,7 @@ export default function HeaderMapper({
               })}
             </div>
           </div>
-          <div className="bg-hello-csv-muted hidden flex-1 overflow-y-auto sm:block">
+          <div className="sticky top-0 self-start max-h-[100vh] overflow-y-auto bg-hello-csv-muted hidden flex-1 sm:block">
             <HeaderMapperDataPreview
               examples={hoveredExamples}
               csvHeader={hoveredCsvHeader ?? ''}

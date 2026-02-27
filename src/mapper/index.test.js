@@ -33,4 +33,15 @@ describe('buildSuggestedHeaderMappings', () => {
     );
     expect(nameMapping.sheetColumnId).toEqual('name');
   });
+
+  it('suggests mappings case-insensitively', () => {
+    const suggestedHeaderMappings = buildSuggestedHeaderMappings(sheets, [
+      'EMAIL',       // uppercase
+      'Phone_Number', // underscore, mixed case
+      'NAME',        // uppercase
+    ]);
+    expect(suggestedHeaderMappings.find((m) => m.csvColumnName === 'EMAIL').sheetColumnId).toBe('email');
+    expect(suggestedHeaderMappings.find((m) => m.csvColumnName === 'Phone_Number').sheetColumnId).toBe('phone_number');
+    expect(suggestedHeaderMappings.find((m) => m.csvColumnName === 'NAME').sheetColumnId).toBe('name');
+  });
 });
